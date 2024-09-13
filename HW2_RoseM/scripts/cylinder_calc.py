@@ -30,10 +30,10 @@ class Calc:
         """
 
         # Radius of the cylinder
-        radius = float(input("Enter the radius in decimal form (Ex. 4.55): "))
+        radius = float(input("Please enter the radius of the cylinder in decimal form (Ex. 4.55): "))
 
         # Height of the cylinder
-        height = float(input("Enter the height in decimal form (Ex. 4.55): "))
+        height = float(input("Pleae enter the height of the cylinder in decimal form (Ex. 4.55): "))
 
         # Volume formula for cylinder
         volume = pi * (radius ** 2) * height
@@ -50,14 +50,14 @@ class Calc:
             
             # Nested conditional if the user wants to round to a specific place or not
             if roundPlace == 0:
-                print(f"The volume is {round(volume)}.")
-                print(f"The surface area is {round(surface_area)}.")
+                print(f"The volume of the cylinder is {round(volume)} cubic units.")
+                print(f"The surface area of the cylinder is {round(surface_area)} square units.")
             else:
-                print(f"The volume is {round(volume, roundPlace)}.")
-                print(f"The surface area is {round(surface_area, roundPlace)}.")
+                print(f"The volume is {round(volume, roundPlace)} cubic units.")
+                print(f"The surface area is {round(surface_area, roundPlace)} square units.")
         else:
-            print(f"The volume is {volume}.")
-            print(f"The surface area is {surface_area}.")
+            print(f"The volume of the cylinder is {round(volume, 2)} cubic units.")
+            print(f"The surface area of the cylinder is {round(surface_area, 2)} square units.")
 
 
 # Calculator object that will call the desired function/script
