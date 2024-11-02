@@ -26,15 +26,20 @@ class Biologist:
         # User input for total hours of growth
         growth_hours = int(input("Enter the total hours of growth: "))
 
-        # Total population loop structure
-        pop_total = pop_init
-        i = 0
-        while i < growth_hours:
-            i += hours_before
-            pop_total *= growth_rate
-        
-        # Print statement for final output
-        print(f"The total population is {int(pop_total)} organisms.")
+        # Calculation for full growth period
+        full_grow_period = growth_hours // hours_before
+
+        # Calculation for remaining hours due to certain fractional cases
+        remaining_hours = growth_hours % hours_before 
+
+        # Population calculation with conditional due to fractional cases
+        total_pop = pop_init * (growth_rate ** full_grow_period)
+        if remaining_hours > 0:
+            partial_rate = 1 + ((growth_rate - 1) * remaining_hours / hours_before)
+            total_pop *= partial_rate
+
+        # Output for user
+        print(f"The total population is {round(total_pop)}") 
 
 
 scientist = Biologist()

@@ -11,9 +11,9 @@ computer provides the guesses and can tell if you are cheating.
 class Script:
     def script(self):
         # User input for lower bound
-        lower = int(input("Enter the smaller number: "))
+        lower = float(input("Enter the smaller number: "))
         # User input for upper bound
-        upper = int(input("Enter the larger number: "))
+        upper = float(input("Enter the larger number: "))
         
         # Counter variable for user attempts
         tries = 0
