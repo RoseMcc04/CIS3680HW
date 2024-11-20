@@ -1,0 +1,14 @@
+{
+    "python.analysis.extraPaths": [
+        "./HW10_RoseM/scripts"
+    ],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./HW10_RoseM",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}

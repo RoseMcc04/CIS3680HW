@@ -2,7 +2,7 @@
 Author: Rose McCormack
 Version: 20 November 2024
 Module: student.py
-Desscription: Resources to manage a student's name and test scores.
+Description: Resources to manage a student's name and test scores.
 """
 
 class Student(object):
@@ -87,18 +87,70 @@ class Student(object):
         return "Name: " + self.name  + "\nScores: " + \
                " ".join(map(str, self.scores))
     
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         """
-        Checks if two students are equal to 
+        Checks if two students are equal to each other as objects. 
+
+        Args:
+            other (object): Object being compared to the student object calling the function.
+        
+        Raises:
+            ValueError: Raised if other is not a Student object.
+        
+        Return:
+            bool: The boolean determining if the two objects are equal to each other or not.
         """
+        if not isinstance(other, Student):
+            raise ValueError("Object is not a student.")
+        return self.name == other.name and self.scores == other.scores
+
+    def __lt__(self, other: object) -> bool:
+        """
+        Checks if the calling object name is less than the input's name.
+
+        Args:
+            other (object): Object being compared to the student object calling the function.
+        
+        Raises:
+            ValueError: Raised if other is not a Student object.
+        
+        Return:
+            bool: The boolean determining if the two objects are equal to each other or not.
+        """
+        if not isinstance(other, Student):
+            raise ValueError("Object is not a student.")
+        return (self.name < other.name) or (self.name == other.name and self.scores < other.scores)
+    
+    def __gt__(self, other: object) -> bool:
+        """
+        Checks if two students are equal to each other as objects. 
+
+        Args:
+            other (object): Object being compared to the student object calling the function.
+        
+        Raises:
+            ValueError: Raised if other is not a Student object.
+        
+        Return:
+            bool: The boolean determining if the two objects are equal to each other or not.
+        """
+        if not isinstance(other, Student):
+            raise ValueError("Object is not a student.")
+        return (self.name > other.name) or (self.name == other.name and self.scores > other.scores)
 
 def main():
-    """A simple test."""
-    student = Student("Ken", 5)
-    print(str(student))
-    for i in range(1, 6):
-        student.setScore(i, 100)
-    print(str(student))
+    # """A simple test."""
+    # student = Student("Ken", 5)
+    # print(str(student))
+    # for i in range(1, 6):
+    #     student.setScore(i, 100)
+    # print(str(student))
+
+    student1 = Student("Robert Sharpe", 7)
+    student2 = Student("Robert Sharpe", 5)
+    print(student1.__eq__(student2))
+    print(student1.__lt__(student2))
+    print(student1.__gt__(student2))
 
 if __name__ == "__main__":
     main()
