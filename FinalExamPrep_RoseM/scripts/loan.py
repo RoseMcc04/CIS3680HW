@@ -126,3 +126,40 @@ class Loan(Customer):
             Customer: The customer associated with the loan.
         """
         return self.customer
+    
+    def calcSimpleInterest(amount: float, interestRate: float, time: int) -> float:
+        """
+        Calculates the simple interest of the loan.
+
+        Args:
+            amount (float): The principal amount of the loan.
+            interestRate (float): The interest rate of the loan.
+            time (int): The duration of the loan.
+        """
+        return round(amount * interestRate * time, 2)
+    
+    def calcCompoundInterest(amount: float, interestRate: float, time: int) -> float:
+        """
+        Calculates the compound interest of the loan.
+
+        Args:
+            amount (float): The principal amount of the loan.
+            interestRate (float): The interest rate of the loan.
+            time (int): The duration of the loan.
+        """
+        return round((amount * (1 + interestRate) ** time) - amount, 2)
+    
+    def str(self) -> str:
+        """
+        Returns a string representation of the loan object.
+
+        Return:
+            str: The string data of the loan.
+        """
+        return (
+            f"Loan ID:\t{self.ID}\n"
+            f"Agent's Name:\t{self.agentName}\n"
+            f"Principal Amount:\t{self.amount}\n"
+            f"Interest Rate:\t{self.interestRate}\n"
+            f"{str(self.customer)}\n"
+        )

@@ -195,5 +195,5 @@ class Customer(object):
         f"Last Name:\t{self.lastName}\n"
         f"Email:\t{self.email}\n"
         f"Phone Number:\t{self.phoneNumber}\n"
-        f"Date of Birth (MM/DD/YYYY)\t{self.DOB.strftime("%m/%d/%y")}"
+        f"Date of Birth (MM/DD/YYYY):\t{self.DOB.strftime('%m/%d/%y')}\n"
         )
