@@ -179,6 +179,12 @@ class Customer(object):
         return self.getAge() >= 21
 
     def str(self) -> str:
+        """
+        Returns a string representation of the customer object.
+
+        Return:
+            str: The string data of the customer. 
+        """
         return (
         f"Customer ID:\t{self.ID}\n"
         f"First Name:\t{self.firstName}\n"

@@ -15,6 +15,16 @@ class Loan(Customer):
     """
     def __init__(self, ID: str, agentName: str, amount: float, 
                  interestRate: float, customer: Customer) -> None:
+        """
+        Constructor for the loan object.
+
+        Args:
+            ID (str): The identification tag of the loan.
+            agentName (str): The NU Bank loan agent's name.
+            amount (float): The total amount of the loan.
+            interestRate (float): The loan's interest rate.
+            customer (Customer): The customer associated with the loan.
+        """
         self.ID = ID
         self.agentName = agentName
         self.amount = amount 
