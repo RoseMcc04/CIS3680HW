@@ -8,7 +8,7 @@ Module: app.py
 Description: This is the executable file for our new loan processing system.
 """
 
-def main():
+def main() -> None:
     """"""
 
 if __name__ == "__main__":

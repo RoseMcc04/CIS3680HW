@@ -117,6 +117,8 @@ class Customer(object):
         Args:
             phoneNumber (str): The phone number of the customer.
         """
+
+        # Debugging logic to get accurate data
         if len(phoneNumber) != 14:
             raise ValueError("Improper length of the phone number.")
         if phoneNumber[0] != '(' or phoneNumber[4] != ')' or phoneNumber[5] != '-' or phoneNumber[9] != '-':
@@ -143,12 +145,14 @@ class Customer(object):
         Raises:
             ValueError: If DOB is not a valid date string in the format 'YYYY-MM-DD'.
         """
+
+        # Debugging logic to make sure the date input is proper
         try:
             self.DOB = datetime.datetime.strptime(DOB, "%Y-%m-%d").date()
         except ValueError:
             raise ValueError("DOB is not a valid date string in the format 'YYYY-MM-DD'.")
     
-    def setDOB(self) -> datetime.date:
+    def getDOB(self) -> datetime.date:
         """
         Returns the customer's date of birth.
 
