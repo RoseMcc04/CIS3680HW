@@ -102,7 +102,7 @@ class Student(object):
         """
         if not isinstance(other, Student):
             raise ValueError("Object is not a student.")
-        return self.name == other.name and self.scores == other.scores
+        return self.name == other.name and tuple(self.scores) == tuple(other.scores)
 
     def __lt__(self, other: object) -> bool:
         """
@@ -119,7 +119,7 @@ class Student(object):
         """
         if not isinstance(other, Student):
             raise ValueError("Object is not a student.")
-        return (self.name < other.name) or (self.name == other.name and self.scores < other.scores)
+        return (self.name < other.name) or (self.name == other.name and tuple(self.scores) < tuple(other.scores))
     
     def __gt__(self, other: object) -> bool:
         """
@@ -136,7 +136,7 @@ class Student(object):
         """
         if not isinstance(other, Student):
             raise ValueError("Object is not a student.")
-        return (self.name > other.name) or (self.name == other.name and self.scores > other.scores)
+        return (self.name > other.name) or (self.name == other.name and tuple(self.scores) > tuple(other.scores))
 
 def main():
     # """A simple test."""
@@ -146,7 +146,7 @@ def main():
     #     student.setScore(i, 100)
     # print(str(student))
 
-    student1 = Student("Robert Sharpe", 7)
+    student1 = Student("Robert Sharpe", 5)
     student2 = Student("Robert Sharpe", 5)
     print(student1.__eq__(student2))
     print(student1.__lt__(student2))
