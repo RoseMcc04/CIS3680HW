@@ -13,8 +13,14 @@ class Loan(Customer):
     Represents a loan object that a customer object is associated with it. The \n
     constructor will describe the attributes of the class.
     """
-    def __init__(self, ID: str, agentName: str, amount: float, 
-                 interestRate: float, customer: Customer) -> None:
+    def __init__(
+            self, 
+            ID: str = '', 
+            agentName: str = '', 
+            amount: float = '', 
+            interestRate: float = '', 
+            customer: Customer = None
+    ) -> None:
         """
         Constructor for the loan object.
 
@@ -127,7 +133,7 @@ class Loan(Customer):
         """
         return self.customer
     
-    def calcSimpleInterest(amount: float, interestRate: float, time: int) -> float:
+    def calcSimpleInterest(amount: float, interestRate: float, time: float) -> float:
         """
         Calculates the simple interest of the loan.
 
@@ -135,10 +141,13 @@ class Loan(Customer):
             amount (float): The principal amount of the loan.
             interestRate (float): The interest rate of the loan.
             time (int): The duration of the loan.
+        
+        Return:
+            float: The simple interest accrued on the loan.
         """
         return round(amount * interestRate * time, 2)
     
-    def calcCompoundInterest(amount: float, interestRate: float, time: int) -> float:
+    def calcCompoundInterest(amount: float, interestRate: float, time: float) -> float:
         """
         Calculates the compound interest of the loan.
 
@@ -146,10 +155,13 @@ class Loan(Customer):
             amount (float): The principal amount of the loan.
             interestRate (float): The interest rate of the loan.
             time (int): The duration of the loan.
+        
+        Return:
+            float: The compound interest accrued on the loan.
         """
         return round((amount * (1 + interestRate) ** time) - amount, 2)
     
-    def str(self) -> str:
+    def __str__(self) -> str:
         """
         Returns a string representation of the loan object.
 
@@ -157,9 +169,14 @@ class Loan(Customer):
             str: The string data of the loan.
         """
         return (
-            f"Loan ID:\t{self.ID}\n"
-            f"Agent's Name:\t{self.agentName}\n"
-            f"Principal Amount:\t{self.amount}\n"
-            f"Interest Rate:\t{self.interestRate}\n"
-            f"{str(self.customer)}\n"
+            "Loan ID: " + str(self.ID) + "\n" +
+            "Agent's Name: " + self.agentName + "\n" +
+            "Principal Amount: " + "${:,.2f}".format(self.amount) + "\n" +
+            "Interest Rate: " + "{:.2f}%".format(self.interestRate * 100) + "\n" +
+            "Customer ID: " + str(self.customer.getID()) + "\n" +
+            "First Name: " + self.customer.getFirstName() + "\n" +
+            "Last Name: " + self.customer.getLastName() + "\n" +
+            "Email: " + self.customer.getEmail() + "\n" +
+            "Phone Number: " + self.customer.getPhoneNumber() + "\n" +
+            "Date of Birth: " + self.customer.getDOB().strftime('%m/%d/%Y') + "\n"
         )

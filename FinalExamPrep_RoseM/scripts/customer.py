@@ -14,8 +14,15 @@ class Customer(object):
     Represents a customer object used to differentiate accounts for withdrawing\n
     loans. The constructor will describe the attributes of the class. 
     """
-    def __init__(self, ID: str, firstName: str, lastName: str, email: str, 
-                 phoneNumber: str, DOB: datetime.date) -> None:
+    def __init__(
+        self,
+        ID: str = '',
+        firstName: str = '',
+        lastName: str = '',
+        email: str = '',
+        phoneNumber: str = '',
+        DOB: datetime.date = None
+    ) -> None:
         """
         Constructor for the customer object. 
 
@@ -138,19 +145,25 @@ class Customer(object):
     def setDOB(self, DOB: str) -> None:
         """
         Sets the customer's date of birth from a string in 'YYYY-MM-DD' format.
+        
+        If DOB is already a datetime object, it assigns it directly.
 
         Args:
-            DOB (str): A string representing the customer's date of birth.
+            DOB (str): A string representing the customer's date of birth in 'YYYY-MM-DD' format.
 
         Raises:
             ValueError: If DOB is not a valid date string in the format 'YYYY-MM-DD'.
         """
-
-        # Debugging logic to make sure the date input is proper
-        try:
-            self.DOB = datetime.datetime.strptime(DOB, "%Y-%m-%d").date()
-        except ValueError:
-            raise ValueError("DOB is not a valid date string in the format 'YYYY-MM-DD'.")
+        if isinstance(DOB, datetime.datetime):
+            # If DOB is already a datetime object, directly assign the date part.
+            self.DOB = DOB.date()
+        elif isinstance(DOB, str):
+            try:
+                self.DOB = datetime.datetime.strptime(DOB, "%Y-%m-%d").date()
+            except ValueError:
+                raise ValueError(f"DOB '{DOB}' is not a valid date string. Expected format: 'YYYY-MM-DD'.")
+        else:
+            raise ValueError(f"DOB must be a string or datetime object, but got {type(DOB)}.")
     
     def getDOB(self) -> datetime.date:
         """
@@ -182,7 +195,7 @@ class Customer(object):
         """
         return self.getAge() >= 21
 
-    def str(self) -> str:
+    def __str__(self) -> str:
         """
         Returns a string representation of the customer object.
 
@@ -190,10 +203,10 @@ class Customer(object):
             str: The string data of the customer. 
         """
         return (
-        f"Customer ID:\t{self.ID}\n"
-        f"First Name:\t{self.firstName}\n"
-        f"Last Name:\t{self.lastName}\n"
-        f"Email:\t{self.email}\n"
-        f"Phone Number:\t{self.phoneNumber}\n"
-        f"Date of Birth (MM/DD/YYYY):\t{self.DOB.strftime('%m/%d/%y')}\n"
+            "\tCustomer ID: " + str(self.ID) + "\n" +
+            "\tFirst Name: " + self.firstName + "\n" +
+            "\tLast Name: " + self.lastName + "\n" +
+            "\tEmail: " + self.email + "\n" +
+            "\tPhone Number: " + self.phoneNumber + "\n" +
+            "\tDate of Birth: " + self.DOB.strftime('%m/%d/%Y') + "\n"
         )
