@@ -133,7 +133,7 @@ class Loan(Customer):
         """
         return self.customer
     
-    def calcSimpleInterest(amount: float, interestRate: float, time: float) -> float:
+    def calcSimpleInterest(self, amount: float, interestRate: float, time: float) -> float:
         """
         Calculates the simple interest of the loan.
 
@@ -147,7 +147,7 @@ class Loan(Customer):
         """
         return round(amount * interestRate * time, 2)
     
-    def calcCompoundInterest(amount: float, interestRate: float, time: float) -> float:
+    def calcCompoundInterest(self, amount: float, interestRate: float, time: float) -> float:
         """
         Calculates the compound interest of the loan.
 

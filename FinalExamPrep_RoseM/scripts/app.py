@@ -71,7 +71,7 @@ def main() -> None:
                 print(f"Invalid input: {ve}. Please enter a valid interest rate.")
 
         simpleInterest = loan.calcSimpleInterest(loan.getAmount(), loan.getInterestRate(), time)
-        compoundInterest = loan.calcCompoundInterest(loan.getAmount, loan.getInterestRate(), time)
+        compoundInterest = loan.calcCompoundInterest(loan.getAmount(), loan.getInterestRate(), time)
 
         # Print loan details
         print("\nLoan Information:\n")
