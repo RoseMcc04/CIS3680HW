@@ -48,9 +48,6 @@ def main() -> None:
 
         time = float(input("Enter the current duration of the loan in years: "))
 
-        simpleInterest = loan.calcSimpleInterest(loan.getAmount(), loan.getInterestRate(), time)
-        compoundInterest = loan.calcCompoundInterest(loan.getAmount, loan.getInterestRate(), time)
-
         # Handle loan amount input and ensure it's valid
         while True:
             try:
@@ -73,9 +70,19 @@ def main() -> None:
             except ValueError as ve:
                 print(f"Invalid input: {ve}. Please enter a valid interest rate.")
 
+        simpleInterest = loan.calcSimpleInterest(loan.getAmount(), loan.getInterestRate(), time)
+        compoundInterest = loan.calcCompoundInterest(loan.getAmount, loan.getInterestRate(), time)
+
         # Print loan details
         print("\nLoan Information:\n")
         print(str(loan))  # This will print customer and loan info, formatted as per the __str__ methods.
+
+        # Print financial information
+        print(f"Loan Totals based on {time} years:\n")
+        print(f"Total simple interest: ${round(simpleInterest, 2)}")
+        print(f"Total compound interest: ${round(compoundInterest, 2)}")
+        print(f"Total loan with simple interest: ${round(amount + simpleInterest, 2)}")
+        print(f"Total loan with compound interest: ${round(amount + compoundInterest, 2)}")
 
     except Exception as e:
         print(f"An error occurred: {e}")
