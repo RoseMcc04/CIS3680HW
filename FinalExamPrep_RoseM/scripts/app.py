@@ -1,5 +1,5 @@
-from customer import Customer
-from loan import Loan
+from FinalExamPrep_RoseM.scripts.logicobjects.customer import Customer
+from FinalExamPrep_RoseM.scripts.logicobjects.loan import Loan
 from datetime import datetime
 
 """

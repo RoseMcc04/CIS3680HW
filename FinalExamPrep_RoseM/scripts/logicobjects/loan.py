@@ -1,4 +1,4 @@
-from customer import Customer
+from FinalExamPrep_RoseM.scripts.logicobjects.customer import Customer
 
 """
 Author: Rose McCormack
